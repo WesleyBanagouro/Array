@@ -70,16 +70,41 @@
     // Array.prototype.reduce()
     // 4. Quantos anos todos os inventores viveram juntos?
 
+    const totalIdades = cientistas.reduce(function (total, cientista){
+        const idade = cientista.passed - cientista.year;
+
+        return total + idade;
+    }, 0);
+
+    console.log(totalIdades)
+
     // 5. Ordene os inventores por anos vividos
 
-    // 6. Crie uma lista de avenidas em Paris que contenham 'de' em qualquer lugar do nome
-    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    const ordemIdade = cientistas.sort(function comparar(a, b){
+        if ((a.passed - a.year) < (b.passed - b.year)) {
+            return -1;
+        }
+        if (a.passed - a.year < b.passed - b.year) {
+            return 1;
+        }
+        return 0;
+    });
+
+    console.table(ordemIdade)
 
 
-    // 7. Exercício de ordenação
+    // 6. Exercício de ordenação
     // Classifique as pessoas em ordem alfabética pelo sobrenome
 
-    // 8. Exercício de redução
+    const sobrenome = pessoas.sort(function (nome, sobrenome) {
+        const [aSobrenome, aNome] = nome.split(', ');
+        const [bSobrenome, bNome] = sobrenome.split(', ');
+        return aSobrenome > bSobrenome ? 1 :-1;
+    });
+
+    console.log(sobrenome)
+
+    // 7. Exercício de redução
     // Some as instâncias de cada um destes
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
